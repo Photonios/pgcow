@@ -27,6 +27,9 @@
 #include "miscadmin.h"
 #include "pgstat.h"
 
+/* Hook for plugins to get control in copydir() */
+copydir_hook_type copydir_hook = NULL;
+
 /*
  * copydir: copy a directory
  *
@@ -36,6 +39,22 @@
 void
 copydir(char *fromdir, char *todir, bool recurse)
 {
+	if (copydir_hook)
+		(*copydir_hook) (fromdir, todir, recurse);
+	else
+		standard_copydir(fromdir, todir, recurse);
+}
+
+/*
+ * copydir: copy a directory
+ *
+ * If recurse is false, subdirectories are ignored.  Anything that's not
+ * a directory or a regular file is ignored.
+ */
+void
+standard_copydir(char *fromdir, char *todir, bool recurse)
+{
+
 	DIR		   *xldir;
 	struct dirent *xlde;
 	char		fromfile[MAXPGPATH * 2];
