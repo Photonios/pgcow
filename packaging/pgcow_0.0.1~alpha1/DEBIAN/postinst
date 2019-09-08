@@ -6,4 +6,6 @@ if [[ ! $(getent passwd postgres) ]]; then
     adduser --disabled-password --gecos "" postgres
 fi
 
+ldconfig
+
 systemctl daemon-reload
