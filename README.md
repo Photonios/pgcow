@@ -1,10 +1,14 @@
 <p align="center">
 <img width="20%" src="./contrib/pgcow/logo.png" />
 </p>
+<br>
+<p align="center">
+A PostgreSQL distribution introducing copy-on-write semantics.
+</p>
 
-A PostgreSQL distribution introducing copy-on-write semantics for databases.
+PGCow is a PostgreSQL distribution in which each database in a cluster is a ZFS dataset. New databases will only start copying from their base template as they are being modified. This allows blazing fast write-able "copies" of large databases with minimal storage usage.
 
-## About
+## Code
 Most of PGCow resides in an PostgreSQL extension. Some small modifications have been made to PostgreSQL itself to faciliate the extension. These modifications have been contributed upstream. Once merged and released, PGCow can be distributed as an indepdenent extension.
 
 This repository is a copy of the PostgreSQL 11.X release branc (`REL_11_STABLE`). PGCow's extension code has been added to `contrib/pgcow`.
