@@ -1,0 +1,8 @@
+Package: pgcow
+Version: 0.0.1
+Section: base
+Priority: optional
+Architecture: amd64
+Depends: zlib1g (>= 1.2.12), libzfs2linux (>= 0.7.5), readline-common (>= 7.0)
+Maintainer: Swen Kooij <swenkooij@gmail.com>
+Description: PostgreSQL 11.X distribution with copy-on-write semantics.
