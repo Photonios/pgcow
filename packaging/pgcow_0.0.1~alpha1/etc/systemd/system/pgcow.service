@@ -1,5 +1,4 @@
 [Unit]
-Description=A PostgreSQL distribution introducing copy-on-write semantics for databases.
 Documentation=man:postgres(1)
 
 [Service]
