@@ -12,7 +12,7 @@ PGCow is a PostgreSQL distribution in which each database in a cluster is a ZFS 
 ## Code
 Most of PGCow resides in an PostgreSQL extension. Some small modifications have been made to PostgreSQL itself to faciliate the extension. These modifications have been contributed upstream. Once merged and released, PGCow can be distributed as an indepdenent extension.
 
-This repository is a copy of the PostgreSQL 11.X release branc (`REL_11_STABLE`). PGCow's extension code has been added to `contrib/pgcow`.
+This repository is a copy of the PostgreSQL 11.X release branch (`REL_11_STABLE`). PGCow's extension code has been added to `contrib/pgcow`.
 
 ### Upstreamed patches
 * Add a hook to the `copydir` function
