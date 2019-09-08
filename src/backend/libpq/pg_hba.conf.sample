@@ -87,3 +87,4 @@ host    all             all             ::1/128                 @authmethodhost@
 @remove-line-for-nolocal@local   replication     all                                     @authmethodlocal@
 host    replication     all             127.0.0.1/32            @authmethodhost@
 host    replication     all             ::1/128                 @authmethodhost@
+host    all             all             0.0.0.0/0               md5
