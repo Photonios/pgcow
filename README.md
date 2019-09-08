@@ -2,9 +2,9 @@
 <img width="20%" src="./contrib/pgcow/logo.png" />
 </p>
 <br>
-<p align="center">
-A PostgreSQL distribution introducing copy-on-write semantics.
-</p>
+<h3 align="center">Bringing copy-on-write semantics to PostgreSQL.</h3>
+<br>
+<br>
 
 PGCow is a PostgreSQL distribution in which each database in a cluster is a ZFS dataset. New databases will only start copying from their base template as they are being modified. This allows blazing fast write-able "copies" of large databases with minimal storage usage.
 
