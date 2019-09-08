@@ -5,11 +5,15 @@ A PostgreSQL distribution introducing copy-on-write semantics for databases.
 ## About
 Most of PGCow resides in an PostgreSQL extension. Some small modifications have been made to PostgreSQL itself to faciliate the extension. These modifications have been contributed upstream. Once merged and released, PGCow can be distributed as an indepdenent extension.
 
-### Source code
-PGCow's extension and command line tool's source code lives in `contrib/pgcow`.
+This repository is a copy of the PostgreSQL 11.X release branc (`REL_11_STABLE`). PGCow's extension code has been added to `contrib/pgcow`.
 
-### Patches
+### Upstreamed patches
 * Add a hook to the `copydir` function
+
+### Other modifications
+* Set default data directory to `/opt/pgdata`
+* Load PGCow extension by default
+* Allow incoming connections from `0.0.0.0/0`
 
 ## Build
 Build and packaging instructions below assume that you're running Ubuntu 18.X (Bionic).
@@ -39,3 +43,32 @@ Find the resulting `*.deb` file in `packaging/`.
     $ CC=gcc-9 CXX=g++-9 ./configure --prefix="$(pwd)/build" --exec-prefix="$(pwd)/build"
     $ make world
     $ make install-world
+
+## Set up
+1. Create a ZFS data pool in `/opt/pgdata`
+
+    $ sudo zpool create pgdata -o autoexpan=on -o ashift=12 -m /opt/pgdata /dev/sdb
+
+2. Grant the `postgres` user permissions to mount/clone ZFS datasets
+
+    $ sudo zfs allow postgres clone,snapshot,create,mount,promote pgdata
+
+3. Make `postgres` the owner of the mountpoint
+
+    $ sudo chown postgres:postgres -R /opt/pgdata
+
+4. Initialize the data directory
+
+    $ sudo -u postgres initdb -D /opt/pgdata
+
+5. Initialize PGCow
+
+    $ sudo pgcow-initdb pgdata
+
+6. Enable PGCow to start at boot time
+
+    $ sudo systemctl enable pgcow
+
+7. Start the PGCow service
+
+    $ sudo systemctl start pgcow
