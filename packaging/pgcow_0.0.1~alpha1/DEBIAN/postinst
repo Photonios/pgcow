@@ -2,8 +2,6 @@
 
 set -e
 
-source "/etc/profile.d/pgcow.sh"
-
 if [[ ! $(getent passwd postgres) ]]; then
     adduser --disabled-password --gecos "" postgres
 fi
