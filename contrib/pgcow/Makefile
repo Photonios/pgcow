@@ -15,11 +15,15 @@ OBJS = \
 
 PG_CPPFLAGS = \
 	-fPIC \
+	-static-libstdc++ \
 	-I./inc \
 	-I./third-party/spdlog/include \
 	-I./third-party/cxxopts/include \
 	-std=c++17 \
 	$(shell pkg-config libzfs --cflags | sed 's/-I/-isystem/g')
+
+# we set CC to g++, so CFLAGS == CPPFLAGS
+PG_CFLAGS = $(PG_CPPFLAGS)
 
 PG_LIBS = $(shell pkg-config libzfs --libs)
 
@@ -37,6 +41,8 @@ include $(top_builddir)/src/Makefile.global
 include $(top_srcdir)/contrib/contrib-global.mk
 endif
 
+# pgxs doesn't know how to compile c++, let's trick
+# it by telling it g++ is a C compiler
 CC = g++-9
 CXX = g++-9
 

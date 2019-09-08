@@ -6,7 +6,7 @@ source "$(dirname $0)/config.sh"
 
 cd ..
 
-CC=gcc-9 CXX=g++-9 ./configure "--prefix=$package_dir$install_dir" "--exec-prefix=$package_dir$install_dir" --disable-rpath
+./configure "--prefix=$package_dir$install_dir" "--exec-prefix=$package_dir$install_dir" --disable-rpath
 make world -j$(cpu_count)
 make install-world
 
