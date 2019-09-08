@@ -15,6 +15,7 @@ OBJS = \
 
 PG_CPPFLAGS = \
 	-fPIC \
+	-static-libc \
 	-static-libstdc++ \
 	-I./inc \
 	-I./third-party/spdlog/include \
