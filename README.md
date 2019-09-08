@@ -1,4 +1,6 @@
-# PGCow
+<p align="center">
+<img width="20%" src="./contrib/pgcow/logo.png" />
+</p>
 
 A PostgreSQL distribution introducing copy-on-write semantics for databases.
 
