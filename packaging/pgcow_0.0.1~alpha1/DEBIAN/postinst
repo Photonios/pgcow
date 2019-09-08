@@ -5,10 +5,7 @@ set -e
 source "/etc/profile.d/pgcow.sh"
 
 if [[ ! $(getent passwd postgres) ]]; then
-    echo "pgcow: creating postgres user"
     adduser --disabled-password --gecos "" postgres
-else
-    echo "pgcow: re-using existing postgres user"
 fi
 
 systemctl daemon-reload

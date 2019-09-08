@@ -33,7 +33,7 @@ Build and packaging instructions below assume that you're running Ubuntu 18.X (B
 
 2. Install additional libaries for PostgreSQL
 
-        $ sudo apt install -y zlib1g-dev libreadline-dev
+        $ sudo apt install -y zlib1g-dev libreadline-dev libxml2-utils xsltproc
 
 3. Install ZFS
 
