@@ -1,0 +1,4 @@
+comment = 'copy-on-write technology for postgresql'
+default_version = '0.1'
+module_pathname = '$libdir/pgcow'
+relocatable = false

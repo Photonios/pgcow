@@ -48,7 +48,8 @@ SUBDIRS = \
 		tsm_system_rows \
 		tsm_system_time \
 		unaccent	\
-		vacuumlo
+		vacuumlo \
+		pgcow
 
 ifeq ($(with_openssl),yes)
 SUBDIRS += sslinfo
