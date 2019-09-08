@@ -26,7 +26,7 @@ PG_CPPFLAGS = \
 # we set CC to g++, so CFLAGS == CPPFLAGS
 PG_CFLAGS = $(PG_CPPFLAGS)
 
-PG_LIBS = $(shell pkg-config libzfs --libs)
+PG_LDFLAGS = $(shell pkg-config libzfs --libs)
 
 src/%.o:
 	$(CXX) $(CPPFLAGS) -c $(@:.o=.cpp) -o $@
