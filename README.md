@@ -52,9 +52,21 @@ Find the resulting `*.deb` file in `packaging/`.
     $ make install-world
 
 ## Set up
+1. Install all required packages
+
+        $ sudo apt install -y zfsutils-linux readline-common  zlib1g libxml2-utils xsltproc
+
+2. Download the `pgcow` Debian package
+
+        $ wget [url]
+
+3. Install the Debian package
+
+        $ sudo dpkg -i [deb file]
+
 1. Create a ZFS data pool in `/opt/pgdata`
 
-        $ sudo zpool create pgdata -o autoexpan=on -o ashift=12 -m /opt/pgdata /dev/sdb
+        $ sudo zpool create pgdata -o autoexpand=on -o ashift=12 -m /opt/pgdata /dev/xvdb
 
 2. Grant the `postgres` user permissions to mount/clone ZFS datasets
 
