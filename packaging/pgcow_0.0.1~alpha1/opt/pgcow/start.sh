@@ -23,4 +23,4 @@ if [[ ! -f "$pg_cow_version_file" ]]; then
     exit 1
 fi
 
-bin/postgres "$@"
+bin/postgres -D "$data_directory" "$@"
